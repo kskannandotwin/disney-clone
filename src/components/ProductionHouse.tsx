@@ -44,16 +44,17 @@ const ProductionHouse = () => {
       {productionHouseList.map((item) => (
         <div
           key={item.id}
-          className="border border-gray-600 rounded-lg hover:scale-110 transition-all duration-300 ease-in-out cursor-pointer shadow-xl shadow-gray-800"
+          className="border border-gray-600 rounded-lg hover:scale-110 transition-all duration-300 ease-in-out cursor-pointer shadow-xl shadow-gray-800 relative group"
         >
           <video
             src={item.video}
             autoPlay
             loop
             playsInline
-            className="absolute top-0 rounded-md z-0 opacity-0 hover:opacity-50 transition-opacity duration-300 ease-in-out"
+            muted
+            className="absolute top-0 left-0 w-full h-full object-cover rounded-md z-0 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"
           />
-          <img src={item.image} className="w-full z-1" />
+          <img src={item.image} className="w-full z-1 relative" />
         </div>
       ))}
     </div>
