@@ -2,6 +2,8 @@ import axios from "axios";
 
 const movieBaseUrl = "https://api.themoviedb.org/3";
 const apiKey = "7e45eed3674a00aaaa19710b454bde81";
+const movieByGenreBaseURL =
+  "https://api.themoviedb.org/3/discover/movie?api_key=7e45eed3674a00aaaa19710b454bde81";
 // https://api.themoviedb.org/3/trending/all/day?api_key=7e45eed3674a00aaaa19710b454bde81
 
 const globalApi = axios.create({
@@ -21,6 +23,19 @@ const getTrendingVideos = async () => {
   }
 };
 
+const getMovieByGenreId = async (id: number) => {
+  try {
+    const response = await globalApi.get(
+      movieByGenreBaseURL + "&with_genres=" + id,
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching trending videos:", error);
+    throw error;
+  }
+};
+
 export default {
   getTrendingVideos,
+  getMovieByGenreId,
 };
